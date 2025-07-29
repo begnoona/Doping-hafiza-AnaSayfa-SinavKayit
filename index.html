@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Doping Hafıza - Deneme Sınavları</title>
+  <link rel="stylesheet" href="./assets/styles/global.css" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        container: {
+          screens: {
+            sm: '600px',
+            md: '728px',
+            lg: '984px',
+            xl: '1440px',
+            '2xl': '1440px',
+          },
+          padding: {
+            DEFAULT: '1rem',
+            sm: '2rem',
+            lg: '4rem',
+            xl: '5rem',
+            '2xl': '6rem',
+          },
+        },
+        extend: {
+          colors: {
+            "custom-blue-start": "#00507D",
+            "custom-blue-end": "#0073AA",
+            "custom-red": "#AD2317",
+            "custom-yellow": "#F1C40F",
+            "custom-purple": "#9B59B6",
+            "custom-blue-light": "#2D9CDB",
+            "custom-opacity": "rgba(12, 38, 58, 0.2)",
+            "custom-blue-opacity": "rgba(52, 147, 234, 1)",
+            "custom-blue-opacity-back": "rgba(52, 147, 234, 1)",
+            "custom-blue-number": "rgba(33, 121, 201, 1)",
+            "custom-blue-number-back": "rgba(255, 255, 255, 1)",
+            "custom-white-number": "rgba(255, 255, 255, 1)",
+            "custom-whiteblue": "rgba(17, 88, 131, 1)"
+          },
+          fontFamily: {
+            roboto: ["Roboto", "sans-serif"],
+            robotoCondensed: ["Roboto Condensed", "sans-serif"],
+            manrope: ["Manrope", "sans-serif"],
+          },
+        },
+      },
+    };
+  </script>
+</head>
+
+<body>
+  <header
+    class="mx-auto px-[16px] container lg:px-[60px] py-[12px] lg:h-[100px] flex flex-col lg:flex-row items-center justify-between gap-[12px] lg:gap-0">
+    <div class="flex items-center justify-between w-full lg:w-auto">
+      <div class="flex items-center gap-[12px] lg:gap-[16px]">
+        <div class="w-[44px] h-[44px] lg:w-[60px] lg:h-[60px] rounded-[16px] flex items-center justify-center"
+          style="background: linear-gradient(180deg, #D9E3EB 0%, #EEF2F3 100%);">
+          <img src="./assets/images/logo.svg" alt="logo" class="w-[28px] h-[32px] lg:w-[34.66px] lg:h-[40px]" />
+        </div>
+        <div class="leading-none mt-[4px]">
+          <div class="text-[16px] font-roboto text-custom-red font-normal">Çözücü Türkiye Geneli</div>
+          <div
+            class="text-[25px] lg:text-[30px] font-robotoCondensed text-[#00507D] font-bold leading-[100%] tracking-[0%]">
+            DENEME SINAVLARI
+          </div>
+        </div>
+      </div>
+      <img src="./assets/icon/USER.svg" alt="user" class="lg:hidden w-[44px] h-[44px]" />
+    </div>
+
+    <div class="hidden lg:flex items-center gap-[30px]">
+      <nav class="flex items-center gap-[30px] mt-[4px] h-[22px]">
+        <a href="#" class="text-[16px] font-manrope text-custom-red font-bold tracking-[-0.01em] hover:text-[#115883]">
+          Sınav Takvimi
+        </a>
+        <a href="#"
+          class="text-[16px] font-manrope text-[#115883] font-medium tracking-[-0.01em] hover:text-custom-red">
+          Neler Var?
+        </a>
+        <a href="#"
+          class="text-[16px] font-manrope text-[#115883] font-medium tracking-[-0.01em] hover:text-custom-red">
+          Sıkça Sorulan Sorular
+        </a>
+      </nav>
+      <button
+        class="bg-[#00507D] hover:bg-[#00507D] text-white font-manrope font-bold py-[14px] px-[24px] rounded-[8px] text-[14px]">
+        Giriş Yap
+      </button>
+    </div>
+    </div>
+
+  </header>
+  <section class="relative py-[40px] lg:py-[100px] hero-section">
+    <div class="absolute inset-0 overflow-hidden">
+      <img src="./assets/images/arkafon.png" class="object-cover opacity-40" alt="Background" />
+    </div>
+    <div class="relative container mx-auto flex justify-between z-10 overflow-hidden">
+      <div class="w-[807.48px] h-auto">
+        <div class="hidden md:block">
+          <div class="leading-[28px]">
+            <div class="  md:block">
+              <div class="relative inline-block">
+                <img src="./assets/icon/red.svg" class="brush-image" alt="fırça" />
+                <span
+                  class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-[25px] font-medium text-white w-full text-center ">Çözücü
+                  Türkiye Geneli</span>
+              </div>
+              <h1 class="text-white text-[32px] font-manrope font-bold mb-[32px]">Deneme Sınavlarına Ücretsiz Katılın!
+              </h1>
+            </div>
+          </div>
+        </div>
+
+        <div class="block md:hidden text-left">
+          <div class="brush-wrapper mb-[8px]">
+            <span class="brush-text text-[18px] font-manrope bg-custom-red leading-[27px] px-[5px] py-[2px]">
+              Çözücü Türkiye Geneli
+            </span>
+          </div>
+          <div class="pl-0">
+            <h1 class="text-white text-[26px] font-manrope font-bold leading-[38px] mb-[16px]">
+              Deneme Sınavlarına Katıl!
+            </h1>
+            <p class="text-white text-[16px] font-manrope leading-[25px] max-w-[345px]">
+              Türkiye'nin en büyük online deneme sınavlarına ücretsiz kayıt olarak tek kayıtla tüm deneme sınavlarına
+              katılma hakkı kazan!
+            </p>
+          </div>
+        </div>
+
+        <div class="hidden md:grid grid-cols-2 gap-x-[40px] gap-y-[28px] mb-[32px]">
+          <div class="feature-box">
+            <div class="feature-icon-wrapper" style="background-color: #6BA8D1;">
+              <img src="./assets/icon/simgeartan.svg" class="feature-icon" alt="ikon1" />
+            </div>
+            <p class="feature-text">Doping Hafıza sponsorluğunda yapılan deneme sınavlarına kayıt ol!</p>
+          </div>
+          <div class="feature-box">
+            <div class="feature-icon-wrapper" style="background-color: #9B59B6;">
+              <img src="./assets/icon/video.svg" class="feature-icon" alt="ikon2" />
+            </div>
+            <p class="feature-text">Yapay zeka destekli, Türkiye’nin en detaylı deneme analizini görüntüle!</p>
+          </div>
+          <div class="feature-box">
+            <div class="feature-icon-wrapper" style="background-color: #F1C40F;">
+              <img src="./assets/icon/MedalStar2.svg" class="feature-icon" alt="ikon3" />
+            </div>
+            <p class="feature-text">On binlerce kişi arasındaki sıralamanı öğren!</p>
+          </div>
+          <div class="feature-box">
+            <div class="feature-icon-wrapper" style="background-color: #F1C40F;">
+              <img src="./assets/icon/simgeartan.svg" class="feature-icon" alt="ikon4" />
+            </div>
+            <p class="feature-text">Gerçek sınava benzer sorular ile sınav deneyimini arttır!</p>
+          </div>
+        </div>
+
+        <div class="flex flex-col gap-[18px] mt-[20px]">
+          <h3 class=" hidden md:block text-white text-[14px] font-manrope">Ekim 2023, Deneme Sınavları</h3>
+          <h3 class="block md:hidden text-[#F1C40F] text-[14px] font-manrope">Ekim 2023, Deneme Sınavları</h3>
+          <div class="flex gap-[8px] bg-custom-opacity max-w-[320px] rounded-[4px]">
+            <button data-type="all" id="filter-all"
+              class="filter-btn bg-[#3699F4] text-[#FFFFFF] font-manrope text-[14px] py-[6px] px-[14px] rounded-[6px]">
+              Tümü</button>
+            <button data-type="tyt"
+              class="filter-btn text-white font-manrope text-[14px] py-[6px] px-[14px] rounded-[6px]">TYT</button>
+            <button data-type="ayt"
+              class="filter-btn text-white font-manrope text-[14px] py-[6px] px-[14px] rounded-[6px]">AYT</button>
+            <button data-type="lgs"
+              class="filter-btn text-white font-manrope text-[14px] py-[6px] px-[14px] rounded-[6px]">LGS</button>
+            <button data-type="kpss"
+              class="filter-btn text-white font-manrope text-[14px] py-[6px] px-[14px] rounded-[6px]">KPSS</button>
+          </div>
+
+          <div class="flex gap-[16px] overflow-x-auto sm:overflow-x-auto max-w-full pb-[8px] scrollbar-hide">
+            <div data-kategori="tyt"
+              class="card bg-[#ffffff1a] border border-white border-opacity-10 rounded-[6px] px-[16px] py-[10px] text-white text-center min-h-[123px] min-w-[114px]">
+              <div class="bg-custom-blue-opacity text-[11px] font-manrope px-[6px] py-[2px] rounded-[4px]">05/09/2023
+              </div>
+              <div class="text-[16px] font-manrope font-bold leading-[40px]">TYT #1</div>
+              <div class="text-[14px] font-manrope">10:00</div>
+            </div>
+
+            <div data-kategori="lgs"
+              class="card bg-custom-blue-opacity-back rounded-[6px] px-[16px] py-[10px] text-[#2F80ED] text-center min-h-[123px] min-w-[114px]">
+              <div
+                class="text-[11px] text-custom-blue-number bg-custom-blue-number-back font-manrope font-bold px-[6px] py-[2px] rounded-[4px]">
+                09/09/2023</div>
+              <div class="text-[16px] text-custom-white-number font-manrope font-bold leading-[40px]">LGS #4</div>
+              <div class="text-[14px] text-custom-white-number font-manrope">14:00</div>
+            </div>
+
+            <div data-kategori="lgs"
+              class="card bg-[#ffffff1a] bg-opacity-10 border border-white border-opacity-20 rounded-[6px] px-[16px] py-[10px] text-white text-center min-h-[123px] min-w-[114px]">
+              <div class="text-[11px] bg-custom-blue-opacity font-manrope px-[6px] py-[2px] rounded-[4px]">11/09/2023
+              </div>
+              <div class="text-[16px] font-manrope font-bold leading-[40px]">LGS #4</div>
+              <div class="text-[14px] font-manrope">14:00</div>
+            </div>
+
+            <div data-kategori="lgs"
+              class="card bg-[#ffffff1a] bg-opacity-10 border border-white border-opacity-20 rounded-[6px] px-[16px] py-[10px] text-white text-center min-h-[123px] min-w-[114px]">
+              <div class="text-[11px] font-manrope bg-custom-blue-opacity px-[6px] py-[2px] rounded-[4px]">21/09/2023
+              </div>
+              <div class="text-[16px] font-manrope font-bold leading-[40px]">LGS #4</div>
+              <div class="text-[14px] font-manrope">13:30</div>
+            </div>
+          </div>
+          <button id="mobilKayitAc"
+            class="bg-[#1ABC9C] w-[345px] py-[13px] px-[16px] rounded-[6px] text-white text-[14px] font-manrope font-bold  block md:hidden overflow-x-auto sm:overflow-x-auto max-w-full scrollbar-hide">
+            Ücretsiz Kayıt Ol
+          </button>
+        </div>
+      </div>
+      <script>
+        const filtreButon = document.querySelectorAll(".filter-btn");
+        const cards = document.querySelectorAll(".card");
+        filtreButon.forEach((button) => {
+          button.addEventListener("click", () => {
+            const type = button.getAttribute("data-type");
+            filtreButon.forEach((btn) => {
+              btn.classList.remove("bg-[#3699F4]", "text-white");
+              btn.classList.add("text-white");
+            });
+            button.classList.add("bg-[#3699F4]");
+            cards.forEach((card) => {
+              const category = card.getAttribute("data-kategori");
+              if (type === "all" || category === type) {
+                card.style.display = "block";
+              } else {
+                card.style.display = "none";
+              }
+            });
+          });
+        });
+      </script>
+      <div class=" bg-custom-blue-number-back rounded-[10px] px-[24px] py-[28px] shadow-md hidden lg:block">
+        <h2 class="text-custom-whiteblue font-manrope text-[18px] font-bold mb-[20px]">Sınav Kayıt Formu</h2>
+        <div class="grid grid-cols-3 gap-[6px]">
+          <label
+            class="radio-element bg-[rgba(240,242,245,1)] p-[10px] rounded-[6px] flex items-center gap-[10px] cursor-pointer text-[#115883] bg-[#F0F2F5]">
+            <input type="radio" name="ExamTip" value="YKS" class="h-[15px] mb-[2px] cursor-pointer " />
+            <span>YKS</span>
+          </label>
+          <label
+            class="radio-element bg-[rgba(240,242,245,1)] p-[10px] rounded-[6px] flex items-center gap-[10px] cursor-pointer text-[#115883] bg-[#F0F2F5]">
+            <input type="radio" name="ExamTip" value="LGS" class="h-[15px] mb-[2px] cursor-pointer " />
+            <span>LGS</span>
+          </label>
+          <label
+            class="radio-element bg-[rgba(240,242,245,1)] p-[10px] rounded-[6px] flex items-center gap-[10px] cursor-pointer text-[#115883] bg-[#F0F2F5]">
+            <input type="radio" name="ExamTip" value="KPSS" class=" h-[15px] mb-[2px] cursor-pointer " />
+            <span>KPSS</span>
+          </label>
+        </div>
+        <label class="block mb-[4px] text-[12px] mt-[15px] text-[#2C3E50] font-manrope">Ad Soyad</label>
+        <input type="text" placeholder=""
+          class="w-full border border-[#115883] rounded-[6px] py-[10px] px-[12px] text-[14px] font-manrope mb-[16px]" />
+        <label class="block mb-[4px] text-[12px] text-[#2C3E50] font-manrope">Telefon Numarası</label>
+        <input type="text" placeholder="+90 (5--) --- -- --"
+          class="w-full border border-[#115883] rounded-[6px] py-[10px] px-[12px] text-[14px] font-manrope mb-[16px]" />
+        <label class="flex items-start gap-[8px] text-[12px] font-manrope text-[#1A1E26] mb-[12px]">
+          <input type="checkbox" checked class="mt-[3px]" />
+          <span><strong class="text-[#607B96]">Açık Rıza Metni</strong> ile kişisel verilerimin işlenmesini
+            onaylıyorum.</span>
+        </label>
+        <label class="flex items-start gap-[8px] text-[12px] font-manrope text-[#1A1E26] mb-[24px]">
+          <input type="checkbox" class="mt-[3px]" />
+          <span>Tanıtımlardan haberdar olmak istiyorum</span>
+        </label>
+        <button
+          class="w-full bg-[#00507D] text-white text-[14px] font-manrope font-bold py-[12px] rounded-[6px]">Ücretsiz
+          Kayıt Ol</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="mt-[60px] mb-[60px] px-4">
+
+    <div class="flex flex-col items-center text-center md:block md:text-center">
+      <h2 class="text-[20px] md:text-[32px] font-manrope font-bold text-[#2C3E50] leading-[28px] md:leading-[40px]">
+        Deneme Sınavında Neler Var?
+      </h2>
+      <p
+        class="text-[16px] md:text-[18px] font-manrope font-normal text-[#2C3E50] mt-[4px] md:mt-[8px] max-w-[600px] mx-auto md:mx-auto">
+        Çözücü Türkiye Geneli Deneme Sınavlarına katıl, gerçek sınav deneyimini yaşa, binlerce kişi arasından sıralamanı
+        gör.
+      </p>
+    </div>
+
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-y-[75px] gap-x-[40px] mt-[48px] container mx-auto">
+
+      <div class="feature-kard">
+        <img src="./assets/icon/simgeartan.svg" alt="icon"
+          class="feature-ikon hidden sm:block bg-[#1ABC9C] rounded-[9px] w-[30px] h-[30px]" style="object-fit: none;" />
+        <img src="./assets/icon/simgeartanmobil.svg" alt="icon" class="feature-ikon block sm:hidden" />
+        <div>
+          <h3 class="feature-baslik">Yapay Zeka Deneme Analizi</h3>
+          <p class="text-[#4B6075] text-[16px] leading-[26px] font-manrope font-normal mb-[0px] md:mb-0">
+
+            Yapay zeka tarafından hazırlanan Türkiye’nin en detaylı sınav analizi sana yol gösteren bir harita
+            olacak.
+          </p>
+        </div>
+      </div>
+
+      <div class="feature-kard">
+        <img src="./assets/icon/video2.svg" alt="icon" class="feature-ikon hidden sm:block" />
+        <img src="./assets/icon/videomobil.svg" alt="icon" class="feature-ikon block sm:hidden " />
+        <div>
+          <h3 class="feature-baslik">Video Anlatımlı Soru Çözümleri</h3>
+          <p class="text-[#4B6075] text-[16px] leading-[26px] font-manrope font-normal mb-[0px] md:mb-0">
+
+            Deneme sınavında bulunan tüm soruların çözümünü video formatında izleyerek öğrenmeni hızlandır.
+          </p>
+        </div>
+      </div>
+
+      <div class="feature-kard">
+        <img src="./assets/icon/pencil.svg" alt="icon" class="feature-ikon hidden sm:block " />
+        <img src="./assets/icon/pencilmobil.svg" alt="icon" class="feature-ikon block sm:hidden" />
+        <div>
+          <h3 class="feature-baslik">Sınava En Yakın Sorular</h3>
+          <p class="text-[#4B6075] text-[16px] leading-[26px] font-manrope font-normal mb-[0px] md:mb-0">
+
+            Çözücü Türkiye Geneli Deneme Sınavlarındaki sorular, uzman eğitmenler tarafından gerçek sınava birebir
+            yakınlıkta hazırlanır.
+          </p>
+        </div>
+      </div>
+
+      <div class="feature-kard">
+        <img src="./assets/icon/Medal Star.png" alt="icon" class=" feature-ikon hidden sm:block" />
+        <img src="./assets/icon/medalstarmobil.svg" alt="icon" class="feature-ikon block sm:hidden" />
+        <div>
+          <h3 class="feature-baslik">Sıralamanı Gör</h3>
+          <p class="text-[#4B6075] text-[16px] leading-[26px] font-manrope font-normal mb-[0px] md:mb-0">
+
+            Sınava giren on binlerce kişi arasından kaçıncı olduğunu gör, sınav sonucunu önce sıralamanla öğren.
+          </p>
+        </div>
+      </div>
+
+      <div class="feature-kard">
+        <img src="./assets/icon/Users Group Two Rounded.svg" alt="icon" class=" feature-ikon hidden sm:block" />
+        <img src="./assets/icon/personmobil.svg" alt="icon" class="feature-ikon block sm:hidden" />
+        <div>
+          <h3 class="feature-baslik">Rakiplerinle Kendini Kıyasla</h3>
+          <p class="text-[#4B6075] text-[16px] leading-[26px] font-manrope font-normal mb-[0px] md:mb-0">
+
+            Detaylı deneme analizlerinde her soru bazlı başarı oranı ile kendini arkadaşların ve kendi başarı yüzden
+            ile
+            kıyasla.
+          </p>
+        </div>
+      </div>
+
+      <div class="feature-kard">
+        <img src="./assets/icon/Rocket.svg" alt="icon" class="feature-ikon hidden sm:block" />
+        <img src="./assets/icon/rocketmobil.svg" alt="icon" class="feature-ikon block sm:hidden" />
+        <div>
+          <h3 class="feature-baslik">Hedefine Yakınlığını Gör</h3>
+          <p class="text-[#4B6075] text-[16px] leading-[26px] font-manrope font-normal mb-[0px] md:mb-0">
+
+            Yapay zeka tarafından hazırlanmış sınav analizinde hedeflediğin okula yakınlığını gör, sınav sonucunu
+            gerçek
+            hedefinle ölç.
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="relative hero-section ">
+    <div class="absolute inset-0 bg-[#2E2E6F]">
+      <img src="./assets/images/arkafon2.png" alt="Background" class="w-full h-full object-cover opacity-60" />
+    </div>
+
+    <div
+      class="py-[40px] grid grid-cols-1 sm:grid-cols-2 gap-4 relative z-10 container mx-auto relative z-10 container mx-auto">
+      <div>
+        <div class="flex flex-col items-start gap-[20px]">
+
+          <div class="flex items-center gap-[15px] sm:ml-[15px] sm:mt-[10px]">
+            <img src="./assets/icon/tik.svg" alt="şimdi anladım logo"
+              class="w-[35px] h-[35px] sm:w-[45px] sm:h-[45px] bg-white rounded-[8px] px-[10px]" />
+            <span class="text-white text-[18px] sm:text-[23px] font-manrope font-semibold">şimdi anladım</span>
+          </div>
+
+          <div class="relative max-w-[500px] sm:w-auto">
+            <img src="./assets/icon/red.svg" alt="brush" class="sm:w-full sm:h-[90px] w-full h-[55px] mx-auto" />
+            <p
+              class="absolute inset-0 flex items-center justify-center text-white font-manrope font-bold text-[18px] sm:text-[25px] leading-[30px] text-center sm:px-6 px-2">
+              Sınava katıl, özel ders hakkı kazan!
+            </p>
+          </div>
+          <p
+            class="text-white text-center sm:text-left font-manrope font-normal sm:text-[20px] text-[15px] leading-[22px] sm:mt-4 mt-2">
+            Çözücü Türkiye Geneli Deneme Sınavlarına katılan tüm öğrencilerimize, <br class="hidden sm:block" />
+            Şimdi Anladım uygulamasından
+            <span class="text-[#00D1B1] font-bold"> Ücretsiz Birebir Özel Ders Hakkı!</span>
+          </p>
+        </div>
+        <div class="flex flex-col lg:flex-row flex-wrap items-start  lg:items-center gap-4 mt-8 ">
+          <a href="#" class="flex items-center">
+            <img src="./assets/icon/applestoreall.svg" alt="App Store" class="w-auto h-auto" />
+          </a>
+          <a href="#" class="flex items-center">
+            <img src="./assets/icon/playsotreall.svg" alt="Google Play" class="w-auto h-auto" />
+          </a>
+          <a href="#" class="flex items-center">
+            <img src="./assets/icon/HUWAEIALL.svg" alt="AppGallery" class="w-auto h-auto" />
+          </a>
+        </div>
+        <div class="flex flex-col items-start text-left gap-2 mt-10">
+
+          <h2 class="text-[#D7E0FF] text-[12px] md:text-[16px]  leading-[24px] font-manrope font-bold">
+            Şimdi Anladım uygulaması nedir?
+          </h2>
+
+          <p
+            class="text-[#D7E0FF] text-[10px] md:text-[14px] leading-[24px] font-manrope font-normal max-w-[577px] text-left">
+            Ders çalışırken anlamadığınız bir konu olduğunda Şimdi Anladım uygulamasına girin, uzman eğitmen ekspres
+            online özel dersle size konuyu 10 dakikada anlatsın!
+          </p>
+        </div>
+      </div>
+      <div>
+        <img src="/assets/images/phone-1.png" class="hidden lg:block absolute top-1/2 -translate-y-1/2 z-10 "
+          style="right: 10%; top:43%; " />
+        <img src="./assets/images/iphonemobile.png"
+          class="block lg:hidden absolute top-[67%] -translate-y-1/2 z-[-50] right-0 w-[400px] max-w-[70%]" />
+        <img src="/assets/images/phone-2.png" class="hidden lg:block absolute " style="bottom: -23%; right:-5%" />
+      </div>
+  </section>
+
+  <section class="bg-white py-16 px-4 sm:px-6 lg:px-8 font-['Manrope']">
+    <div class="max-w-3xl mx-auto">
+      <h2 class="text-[36px] font-bold text-center mb-10 hidden sm:block">
+        Sınav Hakkında Sık Sorulan Sorular
+      </h2>
+      <h2 class="text-[24px] font-bold mb-10 block sm:hidden">
+        Sık Sorulan Sorular
+      </h2>
+
+      <div id="faq-container" class="space-y-4">
+        <div class="faq-item  p-6 rounded-xl cursor-pointer">
+          <div class="flex items-start gap-1">
+            <div class="faq-icon font-bold"> <img src="./assets/icon/artihali.svg" alt="plus"
+                class="" /></div>
+            <h3 class="font-bold text-base sm:text-lg">
+              Doping Hafıza öğrencisiyim, kayıt yaptırmam gerekir mi?
+            </h3>
+          </div>
+          <p class="faq-answer text-sm sm:text-base mt-2 text-gray-700">
+            Doping Hafıza kullanıcısının Doping Hafıza üzerinden deneme sınavına başvurması halinde tüm sınavlara
+            kaydı otomatik olarak gerçekleşir. Sınav gününde ise Doping Hafıza uygulaması içerisindeki duyurudan
+            sınava direkt olarak bağlanabilir; sınav sonuçlarına da yine aynı duyuru ekranından giriş yaparak
+            ulaşabilir.
+          </p>
+        </div>
+
+        <div class="faq-item  p-6 rounded-xl cursor-pointer">
+          <div class="flex items-start gap-1">
+            <div class="faq-icon  font-bold"> <img src="./assets/icon/artihali.svg" alt="plus"
+                class="" /></div>
+            <h3 class="font-bold text-base sm:text-lg">
+              Sınav için ücret ödemem gerekiyor mu?
+            </h3>
+          </div>
+          <p class="faq-answer text-sm sm:text-base mt-2 text-gray-700">
+            Türkiye Geneli Çözücü Denemeleri tamamen ücretsizdir. Herhangi bir sınav için ödeme yapmanız gerekmez.
+          </p>
+        </div>
+
+        <div class="faq-item  p-6 rounded-xl cursor-pointer">
+          <div class="flex items-start gap-1">
+            <div class="faq-icon  font-bold"> <img src="./assets/icon/artihali.svg" alt="plus"
+                class="" /></div>
+            <h3 class="font-bold text-base sm:text-lg">
+              Deneme sınavlarına ayrı ayrı kayıt olmam gerekiyor mu?
+            </h3>
+          </div>
+          <p class="faq-answer text-sm sm:text-base mt-2 text-gray-700">
+            Hayır, gerekmiyor. Bir sınava kayıt yaptırdığınız taktirde o sınav türünde gerçekleşecek tüm sınavlara kayıt
+            yaptırmış olursunuz.
+          </p>
+        </div>
+
+        <div class="faq-item  p-6 rounded-xl cursor-pointer">
+          <div class="flex items-start gap-1">
+            <div class="faq-icon  font-bold"> <img src="./assets/icon/artihali.svg" alt="plus"
+                class="" /></div>
+            <h3 class="font-bold text-base sm:text-lg">
+              Sıralama sonucumu ne zaman görebilirim?
+            </h3>
+          </div>
+          <p class="faq-answer text-sm sm:text-base mt-2 text-gray-700">
+            Sınavdan 24 saat sonra sonuçlarınızı sınava girdiğiniz ana sayfadan görüntüleyebilirsiniz. Burada sıralama
+            sonucunuzu görebilir, rakiplerinizle kendinizi kıyaslayabilirsiniz.
+          </p>
+        </div>
+
+        <div class="faq-item  p-6 rounded-xl cursor-pointer">
+          <div class="flex items-start gap-1">
+            <div class="faq-icon  font-bold"> <img src="./assets/icon/artihali.svg" alt="plus"
+                class="" /></div>
+            <h3 class="font-bold text-base sm:text-lg">
+              Şimdi Anladım uygulaması nedir?
+            </h3>
+          </div>
+          <p class="faq-answer  text-sm sm:text-base mt-2 text-gray-700">
+            Şimdi Anladım uygulaması, anlamadığınız konuyu hemen öğrenebilmeniz için sizi branş uzmanı ile online ve
+            görüntülü görüşmede bir araya getirir. Anlamadığınız konuyu branş uzmanı 10 dakika içerisinde sana anlatır.
+          </p>
+        </div>
+
+        <div class="faq-item  p-6 rounded-xl cursor-pointer">
+          <div class="flex items-start gap-1">
+            <div class="faq-icon"> <img src="./assets/icon/artihali.svg" alt="plus"
+                class="" /></div>
+            <h3 class="font-bold text-base sm:text-lg">
+              Şimdi Anladım uygulamasındaki kredime nasıl ulaşabilirim?
+            </h3>
+          </div>
+          <p class="faq-answer text-sm sm:text-base mt-2 text-gray-700">
+            Deneme sınavını tamamlayan öğrencilerin kayıt sırasında belirttikleri cep telefon numaralarına sınava
+            girdikleri saatten 24 saat sonra Şimdi Anladım kredisi tanımlanır. Şimdi Anladım kredisi tanımlanan
+            kullanıcılar SMS ile bilgilendirilir. Kullanıcılar Şimdi Anladım uygulamasını indirip sınava kaydoldukları
+            cep telefon numaraları ile giriş yaparak özel derse bağlanabilirler
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    const faqItems = document.querySelectorAll('.faq-item');
+
+    faqItems.forEach((item) => {
+
+
+      item.addEventListener('click', () => {
+        faqItems.forEach((el) => {
+
+          if (el !== item) {
+            const answer = el.querySelector('.faq-answer');
+            const iconImg = el.querySelector('.faq-icon img');
+            answer?.classList.remove('open');
+            if (iconImg) iconImg.src = "./assets/icon/artihali.svg";
+            el.style.backgroundColor = '';
+
+          }
+        });
+
+        const answer = item.querySelector('.faq-answer');
+        const iconImg = item.querySelector('.faq-icon img');
+
+        setTimeout(() => {
+          if (!answer.classList.contains('open')) {
+            answer.classList.add('open');
+            if (iconImg) iconImg.src = "./assets/icon/eksihali.svg";
+            item.style.backgroundColor = '#F3F6F9';
+          } else {
+            answer.classList.remove('open');
+            if (iconImg) iconImg.src = "./assets/icon/artihali.svg";
+            item.style.backgroundColor = '#FFFFFF';
+          }
+        }, 100)
+
+      });
+    });
+  </script>
+
+  <section class="bg-[#00507D] py-[16px]">
+    <div class="container mx-auto flex flex-col sm:flex-row justify-between items-center px-4 sm:px-0 text-white text-[14px] 
+      leading-[34px] font-[400] tracking-[0.07px] font-['SF Pro Display']">
+      <div class="flex gap-2 sm:gap-4 order-2 sm:order-1 mt-2 sm:mt-0 text-center sm:text-left">
+        <a href="#" class="hover:underline">Deneme Sınavına Kayıt Olun</a>
+        <span class="hidden sm:inline">|</span>
+        <a href="#" class="hover:underline">İletişim</a>
+        <span class="hidden sm:inline">|</span>
+        <a href="#" class="hover:underline">Gizlilik İlkeleri</a>
+      </div>
+
+      <div class="order-1 sm:order-2 text-center sm:text-right">
+        Çözücü Online Deneme Sınavı ©2023
+      </div>
+    </div>
+  </section>
+
+<section class="block lg:hidden">
+  <div id="mobilKayitModal" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden justify-center items-center px-4">
+    <div class="bg-white rounded-xl p-6 w-full max-w-[400px] relative">
+      <button id="modalKapat" class="absolute top-2 right-3 text-gray-600 text-[24px] font-bold">&times;</button>
+      <form class="flex flex-col gap-2">
+        <div class="flex justify-between bg-[#F3F6F9] p-2 rounded">
+          <label
+            class="radio-element bg-[rgba(240,242,245,1)] p-[3px] rounded-[5px] flex items-center gap-[3px] cursor-pointer text-[#115883] bg-[#F0F2F5]">
+            <input type="radio" name="ExamTip" value="YKS" class="h-[10px] mb-[1px] cursor-pointer " />
+            <span>YKS</span>
+          </label>
+           <label
+            class="radio-element bg-[rgba(240,242,245,1)] p-[3px] rounded-[5px] flex items-center gap-[3px] cursor-pointer text-[#115883] bg-[#F0F2F5]">
+            <input type="radio" name="ExamTip" value="LGS" class="h-[10px] mb-[1px] cursor-pointer " />
+            <span>LGS</span>
+          </label>
+          <label
+            class="radio-element bg-[rgba(240,242,245,1)] p-[3px] rounded-[5px] flex items-center gap-[3px] cursor-pointer text-[#115883] bg-[#F0F2F5]">
+            <input type="radio" name="ExamTip" value="KPSS" class=" h-[10px] mb-[1px] cursor-pointer " />
+            <span>KPSS</span>
+          </label>
+        </div>
+       <label class="block mb-[4px] text-[12px] mt-[15px] text-[#2C3E50] font-bold font-manrope">Ad Soyad</label>
+        <input type="text" placeholder=""
+          class="w-full border border-[#115883] rounded-[6px] py-[10px] px-[12px] text-[14px]  font-manrope mb-[16px]" />
+        <label class="block mb-[4px] text-[12px] text-[#2C3E50] font-bold font-manrope">Telefon Numarası</label>
+        <input type="text" placeholder="+90 (5--) --- -- --"
+          class="w-full border border-[#115883] rounded-[6px] py-[10px] px-[12px] text-[14px] font-manrope mb-[16px]" />
+           <label class="block mb-[4px] text-[12px] text-[#2C3E50] font-bold font-manrope">Şifre Oluştur</label>
+        <input type="password" placeholder="Çözücü Şifrenizi Oluşturun."
+          class="w-full border border-[#115883] rounded-[6px] py-[10px] px-[12px] text-[14px]  font-manrope mb-[16px]" />
+      
+       <label class="flex items-start gap-[8px] text-[12px] font-manrope text-[#1A1E26] mb-[12px]">
+          <input type="checkbox" checked class="mt-[1px]" />
+          <span><strong class="text-[#607B96]">Açık Rıza Metni</strong> ile kişisel verilerimin işlenmesini
+            onaylıyorum.</span>
+        </label>
+        <label class="flex items-start gap-[8px] text-[12px] font-manrope text-[#1A1E26] mb-[24px]">
+          <input type="checkbox" class="mt-[1px]" />
+          <span>Tanıtımlardan haberdar olmak istiyorum</span>
+        </label>
+       <button
+          class="w-full bg-[#00507D] text-white text-[14px] font-manrope font-bold py-[12px] rounded-[6px]">Ücretsiz
+          Kayıt Ol</button>
+      </form>
+    </div>
+  </div>
+  </section>  
+ 
+  <script>
+  const acBtn = document.getElementById("mobilKayitAc");
+  const modal = document.getElementById("mobilKayitModal");
+  const kapatBtn = document.getElementById("modalKapat");
+
+  acBtn?.addEventListener("click", () => {
+    modal.classList.remove("hidden");
+    modal.classList.add("flex"); 
+  });
+
+  kapatBtn?.addEventListener("click", () => {
+    modal.classList.add("hidden");
+    modal.classList.remove("flex");
+  });
+
+  modal?.addEventListener("click", (e) => {
+    if (e.target === modal) {
+      modal.classList.add("hidden");
+      modal.classList.remove("flex");
+    }
+  });
+</script>
+
+</body>
+
+</html>
