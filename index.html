@@ -2,6 +2,7 @@
 <html lang="tr">
 
 <head>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Doping Hafıza - Deneme Sınavları</title>
@@ -9,6 +10,7 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
+      darkMode: 'class',
       theme: {
         container: {
           screens: {
@@ -73,6 +75,8 @@
       <img src="./assets/icon/USER.svg" alt="user" class="lg:hidden w-[44px] h-[44px]" />
     </div>
 
+
+
     <div class="hidden lg:flex items-center gap-[30px]">
       <nav class="flex items-center gap-[30px] mt-[4px] h-[22px]">
         <a href="#" class="text-[16px] font-manrope text-custom-red font-bold tracking-[-0.01em] hover:text-[#115883]">
@@ -87,12 +91,99 @@
           Sıkça Sorulan Sorular
         </a>
       </nav>
-      <button
-        class="bg-[#00507D] hover:bg-[#00507D] text-white font-manrope font-bold py-[14px] px-[24px] rounded-[8px] text-[14px]">
+      <button id="girisButonu"
+        class="bg-[#00507D] hover:bg-[#00507D] text-white font-manrope font-bold py-[14px] px-[24px] rounded-[8px] text-[14px] ">
         Giriş Yap
       </button>
     </div>
     </div>
+
+    <div id="login-form"
+      class="hidden fixed top-[100px] right-[300px] z-50 bg-white shadow-xl rounded-[8px] w-[370px] p-[30px]">
+      <button id="kapat-btn"
+        class="absolute top-[16px] right-[16px] text-[#999] hover:text-[#115883] text-[22px] font-bold focus:outline-none">
+        &times;
+      </button>
+      <h2 class="text-[#115883] font-manrope font-bold text-[24px] mb-[24px]">Kullanıcı Girişi</h2>
+
+      <div class="flex flex-col gap-[18px]">
+        <div>
+          <label class="text-[11px] text-[#2C3E50] font-manrope font-semibold leading-[18px]">E-Posta</label>
+          <input type="email" placeholder="Kayıtlı e-posta adresin"
+            class="w-full h-[50px] mt-1 px-[16px] rounded-[6px] border border-[#D1D5DB] text-[14px] font-manrope focus:outline-none focus:ring-2 focus:ring-[#00507D]" />
+        </div>
+        <div>
+          <label class="text-[11px] text-[#2C3E50] font-manrope font-semibold leading-[18px]">Şifre</label>
+          <div class="relative">
+            <input type="password" placeholder="Şifreniz"
+              class="w-full h-[50px] px-[16px] rounded-[6px] border border-[#D1D5DB] text-[14px] font-manrope focus:outline-none focus:ring-2 focus:ring-[#00507D]" />
+            <img src="./assets/icon/eye.svg" alt="eye"
+              class="absolute right-[16px] top-1/2 transform -translate-y-1/2 w-[20px] h-[20px] cursor-pointer" />
+          </div>
+        </div>
+        <div class="text-right">
+          <a href="#" id="sifreUnuttumBtn"
+            class="text-[#115883] text-[13px] font-manrope font-bold hover:underline">Şifremi Unuttum</a>
+
+        </div>
+        <button
+          class="h-[50px] bg-[#00507D] text-white rounded-[6px] text-[16px] font-manrope font-bold hover:bg-[#003F63] transition">Giriş
+          Yap</button>
+      </div>
+    </div>
+
+    <div id="sifre-unuttum-modal"
+      class="hidden fixed top-[100px] left-1/2 transform -translate-x-1/2 z-50 bg-white shadow-xl rounded-[8px] w-[520px]  p-[30px]">
+      <button id="kapat-sifre"
+        class="absolute top-[16px] right-[16px] text-[#999] hover:text-[#115883] text-[22px] font-bold focus:outline-none">
+        &times;
+      </button>
+
+      <h2 class="text-[#115883] font-manrope font-bold text-[32px] mb-[12px]">Şifremi Unuttum</h2>
+
+      <div class="flex items-start gap-2 text-[#2C3E50] text-[16px] leading-[24px] font-manrope mb-[20px]">
+        <img src="./assets/icon/info.svg" alt="info" class="w-[16px] h-[16px] mt-[4px]" />
+        <p>Gireceğin cep telefonu numarasına 4 haneli onay kodu gönderilecektir.</p>
+      </div>
+
+      <label for="tel" class="block text-[13px] text-[#2C3E50] font-semibold font-manrope mb-[6px]">Telefon
+        Numarası</label>
+      <input id="tel" type="tel" placeholder="+90 (5--) --- -- --"
+        class="w-full h-[50px] px-[16px] rounded-[6px] border border-[#B5C7D0] text-[14px] font-manrope focus:outline-none focus:ring-2 focus:ring-[#00507D] mb-[20px]" />
+
+      <button
+        class="w-full h-[50px] bg-[#00507D] text-white rounded-[6px] text-[16px] font-manrope font-extrabold hover:bg-[#003F63] transition">
+        Onay Kodu Gönder
+      </button>
+    </div>
+    
+
+    <script>
+      const girisBtn = document.getElementById("girisButonu");
+      const loginForm = document.getElementById("login-form");
+      const kapatBtnn = document.getElementById("kapat-btn");
+
+      girisBtn.addEventListener("click", () => {
+        loginForm.classList.toggle("hidden");
+      });
+
+      kapatBtnn.addEventListener("click", () => {
+        loginForm.classList.add("hidden");
+      });
+
+      const sifreBtn = document.getElementById("sifreUnuttumBtn");
+      const sifreModal = document.getElementById("sifre-unuttum-modal");
+      const sifreKapatBtn = document.getElementById("kapat-sifre");
+
+      sifreBtn.addEventListener("click", (e) => {
+        e.preventDefault();
+        sifreModal.classList.remove("hidden");
+      });
+
+      sifreKapatBtn.addEventListener("click", () => {
+        sifreModal.classList.add("hidden");
+      });
+    </script>
 
   </header>
   <section class="relative py-[40px] lg:py-[100px] hero-section">
@@ -177,7 +268,7 @@
               class="filter-btn text-white font-manrope text-[14px] py-[6px] px-[14px] rounded-[6px]">KPSS</button>
           </div>
 
-          <div class="flex gap-[16px] overflow-x-auto sm:overflow-x-auto max-w-full pb-[8px] scrollbar-hide">
+          <div class="flex gap-[16px] overflow-x-auto sm:overflow-x-auto max-w-full pb-[8px] min-h-[133px]">
             <div data-kategori="tyt"
               class="card bg-[#ffffff1a] border border-white border-opacity-10 rounded-[6px] px-[16px] py-[10px] text-white text-center min-h-[123px] min-w-[114px]">
               <div class="bg-custom-blue-opacity text-[11px] font-manrope px-[6px] py-[2px] rounded-[4px]">05/09/2023
@@ -195,11 +286,19 @@
               <div class="text-[14px] text-custom-white-number font-manrope">14:00</div>
             </div>
 
-            <div data-kategori="lgs"
+            <div data-kategori="kpss"
+              class="card bg-[#ffffff1a] border border-white border-opacity-10 rounded-[6px] px-[16px] py-[10px] text-white text-center min-h-[123px] min-w-[114px]">
+              <div class="bg-custom-blue-opacity text-[11px] font-manrope px-[6px] py-[2px] rounded-[4px]">
+                20/09/2023</div>
+              <div class="text-[16px] font-manrope font-bold leading-[40px]">KPSS #5</div>
+              <div class="text-[14px] font-manrope">10:00</div>
+            </div>
+
+            <div data-kategori="ayt"
               class="card bg-[#ffffff1a] bg-opacity-10 border border-white border-opacity-20 rounded-[6px] px-[16px] py-[10px] text-white text-center min-h-[123px] min-w-[114px]">
-              <div class="text-[11px] bg-custom-blue-opacity font-manrope px-[6px] py-[2px] rounded-[4px]">11/09/2023
+              <div class="text-[11px] bg-custom-blue-opacity font-manrope px-[6px] py-[2px] rounded-[4px]">06/09/2023
               </div>
-              <div class="text-[16px] font-manrope font-bold leading-[40px]">LGS #4</div>
+              <div class="text-[16px] font-manrope font-bold leading-[40px]">AYT #3</div>
               <div class="text-[14px] font-manrope">14:00</div>
             </div>
 
@@ -212,11 +311,13 @@
             </div>
           </div>
           <button id="mobilKayitAc"
-            class="bg-[#1ABC9C] w-[345px] py-[13px] px-[16px] rounded-[6px] text-white text-[14px] font-manrope font-bold  block md:hidden overflow-x-auto sm:overflow-x-auto max-w-full scrollbar-hide">
+            class="bg-[#1ABC9C] w-[345px] py-[13px] px-[16px] rounded-[6px] text-white text-[14px] font-manrope font-bold  block md:hidden overflow-x-auto sm:overflow-x-auto max-w-full">
             Ücretsiz Kayıt Ol
           </button>
         </div>
       </div>
+
+      
       <script>
         const filtreButon = document.querySelectorAll(".filter-btn");
         const cards = document.querySelectorAll(".card");
@@ -224,21 +325,31 @@
           button.addEventListener("click", () => {
             const type = button.getAttribute("data-type");
             filtreButon.forEach((btn) => {
-              btn.classList.remove("bg-[#3699F4]", "text-white");
-              btn.classList.add("text-white");
+              btn.classList.remove("bg-[#3699F4]");
             });
             button.classList.add("bg-[#3699F4]");
             cards.forEach((card) => {
               const category = card.getAttribute("data-kategori");
               if (type === "all" || category === type) {
+
+                card.classList.remove("fade-out");
                 card.style.display = "block";
+                setTimeout(() => {
+                  card.classList.add("fade-in");
+                }, 10);
               } else {
-                card.style.display = "none";
+
+                card.classList.remove("fade-in");
+                card.classList.add("fade-out");
+                setTimeout(() => {
+                  card.style.display = "none";
+                }, 500);
               }
             });
           });
         });
       </script>
+
       <div class=" bg-custom-blue-number-back rounded-[10px] px-[24px] py-[28px] shadow-md hidden lg:block">
         <h2 class="text-custom-whiteblue font-manrope text-[18px] font-bold mb-[20px]">Sınav Kayıt Formu</h2>
         <div class="grid grid-cols-3 gap-[6px]">
@@ -264,6 +375,26 @@
         <label class="block mb-[4px] text-[12px] text-[#2C3E50] font-manrope">Telefon Numarası</label>
         <input type="text" placeholder="+90 (5--) --- -- --"
           class="w-full border border-[#115883] rounded-[6px] py-[10px] px-[12px] text-[14px] font-manrope mb-[16px]" />
+
+        <div id="extra-fields" class="hidden">
+          <label class="block mb-[4px] text-[12px] text-[#2C3E50] font-manrope">Öğrenim Bilgisi</label>
+          <input type="text" placeholder="Lise / Lisans / Mezun"
+            class="w-full border border-[#115883] rounded-[6px] py-[10px] px-[12px] text-[14px] font-manrope mb-[16px]" />
+
+          <label class="block mb-[4px] text-[12px] text-[#2C3E50] font-manrope">Okuduğun Okul</label>
+          <input type="text" placeholder="Okuduğunuz Okulu Giriniz"
+            class="w-full border border-[#115883] rounded-[6px] py-[10px] px-[12px] text-[14px] font-manrope mb-[16px] " />
+
+          <label class="block mb-[4px] text-[12px] text-[#2C3E50] font-manrope">Okuduğun Şehir</label>
+          <input type="text" placeholder="İstanbul, Ankara, vs"
+            class="w-full border border-[#115883] rounded-[6px] py-[10px] px-[12px] text-[14px] font-manrope mb-[16px]" />
+
+          <label class="block mb-[4px] text-[12px] text-[#2C3E50] font-manrope">Okuduğun İlçe</label>
+          <input type="text" placeholder="Kadıköy, Keçiören, vs"
+            class="w-full border border-[#115883] rounded-[6px] py-[10px] px-[12px] text-[14px] font-manrope mb-[16px]" />
+
+        </div>
+
         <label class="flex items-start gap-[8px] text-[12px] font-manrope text-[#1A1E26] mb-[12px]">
           <input type="checkbox" checked class="mt-[3px]" />
           <span><strong class="text-[#607B96]">Açık Rıza Metni</strong> ile kişisel verilerimin işlenmesini
@@ -279,6 +410,20 @@
       </div>
     </div>
   </section>
+  <script>
+    const examRadios = document.querySelectorAll('input[name="ExamTip"]');
+    const extraFields = document.getElementById('extra-fields');
+
+    examRadios.forEach((radio) => {
+      radio.addEventListener('change', () => {
+        if (radio.checked) {
+          extraFields.classList.remove("hidden");
+        }
+      });
+    });
+  </script>
+
+
 
   <section class="mt-[60px] mb-[60px] px-4">
 
@@ -374,7 +519,6 @@
           </p>
         </div>
       </div>
-
     </div>
   </section>
 
@@ -451,15 +595,14 @@
       </h2>
 
       <div id="faq-container" class="space-y-4">
-        <div class="faq-item  p-6 rounded-xl cursor-pointer">
+        <div class="faq-item  pl-[0px] rounded-xl cursor-pointer">
           <div class="flex items-start gap-1">
-            <div class="faq-icon font-bold"> <img src="./assets/icon/artihali.svg" alt="plus"
-                class="" /></div>
+            <img src="./assets/icon/artihali.svg" alt="plus" class="faq-icon" />
             <h3 class="font-bold text-base sm:text-lg">
               Doping Hafıza öğrencisiyim, kayıt yaptırmam gerekir mi?
             </h3>
           </div>
-          <p class="faq-answer text-sm sm:text-base mt-2 text-gray-700">
+          <p class="faq-answer text-sm sm:text-base mt-2 text-gray-700 bg-[#F3F6F9] p-4 rounded-xl">
             Doping Hafıza kullanıcısının Doping Hafıza üzerinden deneme sınavına başvurması halinde tüm sınavlara
             kaydı otomatik olarak gerçekleşir. Sınav gününde ise Doping Hafıza uygulaması içerisindeki duyurudan
             sınava direkt olarak bağlanabilir; sınav sonuçlarına da yine aynı duyuru ekranından giriş yaparak
@@ -467,70 +610,65 @@
           </p>
         </div>
 
-        <div class="faq-item  p-6 rounded-xl cursor-pointer">
+        <div class="faq-item pl-[0px] rounded-xl cursor-pointer">
           <div class="flex items-start gap-1">
-            <div class="faq-icon  font-bold"> <img src="./assets/icon/artihali.svg" alt="plus"
-                class="" /></div>
+            <img src="./assets/icon/artihali.svg" alt="plus" class="faq-icon" />
             <h3 class="font-bold text-base sm:text-lg">
               Sınav için ücret ödemem gerekiyor mu?
             </h3>
           </div>
-          <p class="faq-answer text-sm sm:text-base mt-2 text-gray-700">
+          <p class="faq-answer text-sm sm:text-base mt-2 text-gray-700 bg-[#F3F6F9] p-4 rounded-xl">
             Türkiye Geneli Çözücü Denemeleri tamamen ücretsizdir. Herhangi bir sınav için ödeme yapmanız gerekmez.
           </p>
         </div>
 
-        <div class="faq-item  p-6 rounded-xl cursor-pointer">
+        <div class="faq-item pl-[0px] rounded-xl cursor-pointer">
           <div class="flex items-start gap-1">
-            <div class="faq-icon  font-bold"> <img src="./assets/icon/artihali.svg" alt="plus"
-                class="" /></div>
+            <img src="./assets/icon/artihali.svg" alt="plus" class="faq-icon" />
             <h3 class="font-bold text-base sm:text-lg">
               Deneme sınavlarına ayrı ayrı kayıt olmam gerekiyor mu?
             </h3>
           </div>
-          <p class="faq-answer text-sm sm:text-base mt-2 text-gray-700">
+          <p class="faq-answer text-sm sm:text-base mt-2 text-gray-700 bg-[#F3F6F9] p-4 rounded-xl">
             Hayır, gerekmiyor. Bir sınava kayıt yaptırdığınız taktirde o sınav türünde gerçekleşecek tüm sınavlara kayıt
             yaptırmış olursunuz.
           </p>
         </div>
 
-        <div class="faq-item  p-6 rounded-xl cursor-pointer">
+        <div class="faq-item  pl-[0px] rounded-xl cursor-pointer">
           <div class="flex items-start gap-1">
-            <div class="faq-icon  font-bold"> <img src="./assets/icon/artihali.svg" alt="plus"
-                class="" /></div>
+            <img src="./assets/icon/artihali.svg" alt="plus" class="faq-icon" />
             <h3 class="font-bold text-base sm:text-lg">
               Sıralama sonucumu ne zaman görebilirim?
             </h3>
           </div>
-          <p class="faq-answer text-sm sm:text-base mt-2 text-gray-700">
+          <p class="faq-answer text-sm sm:text-base mt-2 text-gray-700 bg-[#F3F6F9] p-4 rounded-xl">
             Sınavdan 24 saat sonra sonuçlarınızı sınava girdiğiniz ana sayfadan görüntüleyebilirsiniz. Burada sıralama
             sonucunuzu görebilir, rakiplerinizle kendinizi kıyaslayabilirsiniz.
           </p>
         </div>
 
-        <div class="faq-item  p-6 rounded-xl cursor-pointer">
+        <div class="faq-item  pl-[0px] rounded-xl cursor-pointer">
           <div class="flex items-start gap-1">
-            <div class="faq-icon  font-bold"> <img src="./assets/icon/artihali.svg" alt="plus"
-                class="" /></div>
+            <img src="./assets/icon/artihali.svg" alt="plus" class="faq-icon" />
             <h3 class="font-bold text-base sm:text-lg">
               Şimdi Anladım uygulaması nedir?
             </h3>
           </div>
-          <p class="faq-answer  text-sm sm:text-base mt-2 text-gray-700">
+          <p class="faq-answer text-sm sm:text-base mt-2 text-gray-700 bg-[#F3F6F9] p-4 rounded-xl">
             Şimdi Anladım uygulaması, anlamadığınız konuyu hemen öğrenebilmeniz için sizi branş uzmanı ile online ve
             görüntülü görüşmede bir araya getirir. Anlamadığınız konuyu branş uzmanı 10 dakika içerisinde sana anlatır.
           </p>
         </div>
 
-        <div class="faq-item  p-6 rounded-xl cursor-pointer">
+        <div class="faq-item  pl-[0px] rounded-xl cursor-pointer">
           <div class="flex items-start gap-1">
-            <div class="faq-icon"> <img src="./assets/icon/artihali.svg" alt="plus"
-                class="" /></div>
+            <img src="./assets/icon/artihali.svg" alt="plus" class="faq-icon" />
             <h3 class="font-bold text-base sm:text-lg">
               Şimdi Anladım uygulamasındaki kredime nasıl ulaşabilirim?
             </h3>
           </div>
-          <p class="faq-answer text-sm sm:text-base mt-2 text-gray-700">
+          <p class="faq-answer text-sm sm:text-base mt-2 text-gray-700 bg-[#F3F6F9] p-4 rounded-xl">
             Deneme sınavını tamamlayan öğrencilerin kayıt sırasında belirttikleri cep telefon numaralarına sınava
             girdikleri saatten 24 saat sonra Şimdi Anladım kredisi tanımlanır. Şimdi Anladım kredisi tanımlanan
             kullanıcılar SMS ile bilgilendirilir. Kullanıcılar Şimdi Anladım uygulamasını indirip sınava kaydoldukları
@@ -543,26 +681,19 @@
 
   <script>
     const faqItems = document.querySelectorAll('.faq-item');
-
     faqItems.forEach((item) => {
-
-
       item.addEventListener('click', () => {
         faqItems.forEach((el) => {
-
           if (el !== item) {
             const answer = el.querySelector('.faq-answer');
-            const iconImg = el.querySelector('.faq-icon img');
+            const iconImg = el.querySelector('.faq-icon ');
             answer?.classList.remove('open');
             if (iconImg) iconImg.src = "./assets/icon/artihali.svg";
             el.style.backgroundColor = '';
-
           }
         });
-
         const answer = item.querySelector('.faq-answer');
-        const iconImg = item.querySelector('.faq-icon img');
-
+        const iconImg = item.querySelector('.faq-icon ');
         setTimeout(() => {
           if (!answer.classList.contains('open')) {
             answer.classList.add('open');
@@ -589,85 +720,82 @@
         <span class="hidden sm:inline">|</span>
         <a href="#" class="hover:underline">Gizlilik İlkeleri</a>
       </div>
-
       <div class="order-1 sm:order-2 text-center sm:text-right">
         Çözücü Online Deneme Sınavı ©2023
       </div>
     </div>
   </section>
 
-<section class="block lg:hidden">
-  <div id="mobilKayitModal" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden justify-center items-center px-4">
-    <div class="bg-white rounded-xl p-6 w-full max-w-[400px] relative">
-      <button id="modalKapat" class="absolute top-2 right-3 text-gray-600 text-[24px] font-bold">&times;</button>
-      <form class="flex flex-col gap-2">
-        <div class="flex justify-between bg-[#F3F6F9] p-2 rounded">
-          <label
-            class="radio-element bg-[rgba(240,242,245,1)] p-[3px] rounded-[5px] flex items-center gap-[3px] cursor-pointer text-[#115883] bg-[#F0F2F5]">
-            <input type="radio" name="ExamTip" value="YKS" class="h-[10px] mb-[1px] cursor-pointer " />
-            <span>YKS</span>
+  <section class="block lg:hidden bg-custom-blue-number-back rounded-[10px] px-[24px] py-[28px] shadow-md ">
+    <div id="mobilKayitModal" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden justify-center items-center px-4">
+      <div class="bg-white rounded-xl p-6 w-full max-w-[400px] relative">
+        <button id="modalKapat" class="absolute top-2 right-3 text-gray-600 text-[24px] font-bold">&times;</button>
+        <form class="flex flex-col gap-2">
+          <div class="flex justify-between  p-2 rounded grid grid-cols-3 gap-[4px]">
+            <label
+              class="radio-element bg-[rgba(240,242,245,1)] p-[10px] rounded-[6px] flex items-center gap-[10px] cursor-pointer text-[#115883] bg-[#F0F2F5]">
+              <input type="radio" name="ExamTip" value="YKS" class="h-[15px] mb-[2px] cursor-pointer " />
+              <span>YKS</span>
+            </label>
+            <label
+              class="radio-element bg-[rgba(240,242,245,1)] p-[10px] rounded-[6px] flex items-center gap-[10px] cursor-pointer text-[#115883] bg-[#F0F2F5]">
+              <input type="radio" name="ExamTip" value="LGS" class="h-[15px] mb-[2px] cursor-pointer " />
+              <span>LGS</span>
+            </label>
+            <label
+              class="radio-element bg-[rgba(240,242,245,1)] p-[10px] rounded-[6px] flex items-center gap-[10px] cursor-pointer text-[#115883] bg-[#F0F2F5]">
+              <input type="radio" name="ExamTip" value="KPSS" class=" h-[15px] mb-[2px] cursor-pointer " />
+              <span>KPSS</span>
+            </label>
+          </div>
+          <label class="block mb-[4px] text-[12px] mt-[15px] text-[#2C3E50] font-bold font-manrope">Ad Soyad</label>
+          <input type="text" placeholder=""
+            class="w-full border border-[#115883] rounded-[6px] py-[10px] px-[12px] text-[14px]  font-manrope mb-[16px]" />
+          <label class="block mb-[4px] text-[12px] text-[#2C3E50] font-bold font-manrope">Telefon Numarası</label>
+          <input type="text" placeholder="+90 (5--) --- -- --"
+            class="w-full border border-[#115883] rounded-[6px] py-[10px] px-[12px] text-[14px] font-manrope mb-[16px]" />
+          <label class="block mb-[4px] text-[12px] text-[#2C3E50] font-bold font-manrope">Şifre Oluştur</label>
+          <input type="password" placeholder="Çözücü Şifrenizi Oluşturun."
+            class="w-full border border-[#115883] rounded-[6px] py-[10px] px-[12px] text-[14px]  font-manrope mb-[16px]" />
+
+          <label class="flex items-start gap-[8px] text-[12px] font-manrope text-[#1A1E26] mb-[12px]">
+            <input type="checkbox" checked class="mt-[1px]" />
+            <span><strong class="text-[#607B96]">Açık Rıza Metni</strong> ile kişisel verilerimin işlenmesini
+              onaylıyorum.</span>
           </label>
-           <label
-            class="radio-element bg-[rgba(240,242,245,1)] p-[3px] rounded-[5px] flex items-center gap-[3px] cursor-pointer text-[#115883] bg-[#F0F2F5]">
-            <input type="radio" name="ExamTip" value="LGS" class="h-[10px] mb-[1px] cursor-pointer " />
-            <span>LGS</span>
+          <label class="flex items-start gap-[8px] text-[12px] font-manrope text-[#1A1E26] mb-[24px]">
+            <input type="checkbox" class="mt-[1px]" />
+            <span>Tanıtımlardan haberdar olmak istiyorum</span>
           </label>
-          <label
-            class="radio-element bg-[rgba(240,242,245,1)] p-[3px] rounded-[5px] flex items-center gap-[3px] cursor-pointer text-[#115883] bg-[#F0F2F5]">
-            <input type="radio" name="ExamTip" value="KPSS" class=" h-[10px] mb-[1px] cursor-pointer " />
-            <span>KPSS</span>
-          </label>
-        </div>
-       <label class="block mb-[4px] text-[12px] mt-[15px] text-[#2C3E50] font-bold font-manrope">Ad Soyad</label>
-        <input type="text" placeholder=""
-          class="w-full border border-[#115883] rounded-[6px] py-[10px] px-[12px] text-[14px]  font-manrope mb-[16px]" />
-        <label class="block mb-[4px] text-[12px] text-[#2C3E50] font-bold font-manrope">Telefon Numarası</label>
-        <input type="text" placeholder="+90 (5--) --- -- --"
-          class="w-full border border-[#115883] rounded-[6px] py-[10px] px-[12px] text-[14px] font-manrope mb-[16px]" />
-           <label class="block mb-[4px] text-[12px] text-[#2C3E50] font-bold font-manrope">Şifre Oluştur</label>
-        <input type="password" placeholder="Çözücü Şifrenizi Oluşturun."
-          class="w-full border border-[#115883] rounded-[6px] py-[10px] px-[12px] text-[14px]  font-manrope mb-[16px]" />
-      
-       <label class="flex items-start gap-[8px] text-[12px] font-manrope text-[#1A1E26] mb-[12px]">
-          <input type="checkbox" checked class="mt-[1px]" />
-          <span><strong class="text-[#607B96]">Açık Rıza Metni</strong> ile kişisel verilerimin işlenmesini
-            onaylıyorum.</span>
-        </label>
-        <label class="flex items-start gap-[8px] text-[12px] font-manrope text-[#1A1E26] mb-[24px]">
-          <input type="checkbox" class="mt-[1px]" />
-          <span>Tanıtımlardan haberdar olmak istiyorum</span>
-        </label>
-       <button
-          class="w-full bg-[#00507D] text-white text-[14px] font-manrope font-bold py-[12px] rounded-[6px]">Ücretsiz
-          Kayıt Ol</button>
-      </form>
+          <button
+            class="w-full bg-[#00507D] text-white text-[14px] font-manrope font-bold py-[12px] rounded-[6px]">Ücretsiz
+            Kayıt Ol</button>
+        </form>
+      </div>
     </div>
-  </div>
-  </section>  
- 
+  </section>
+
   <script>
-  const acBtn = document.getElementById("mobilKayitAc");
-  const modal = document.getElementById("mobilKayitModal");
-  const kapatBtn = document.getElementById("modalKapat");
-
-  acBtn?.addEventListener("click", () => {
-    modal.classList.remove("hidden");
-    modal.classList.add("flex"); 
-  });
-
-  kapatBtn?.addEventListener("click", () => {
-    modal.classList.add("hidden");
-    modal.classList.remove("flex");
-  });
-
-  modal?.addEventListener("click", (e) => {
-    if (e.target === modal) {
+    const acBtn = document.getElementById("mobilKayitAc");
+    const modal = document.getElementById("mobilKayitModal");
+    const kapatBtn = document.getElementById("modalKapat");
+    acBtn?.addEventListener("click", () => {
+      modal.classList.remove("hidden");
+      modal.classList.add("flex");
+    });
+    kapatBtn?.addEventListener("click", () => {
       modal.classList.add("hidden");
       modal.classList.remove("flex");
-    }
-  });
-</script>
-
+    });
+    modal?.addEventListener("click", (e) => {
+      if (e.target === modal) {
+        modal.classList.add("hidden");
+        modal.classList.remove("flex");
+      }
+    });
+  </script>
 </body>
 
 </html>
+<!--Scroll ekleyemedim tyt ayt lgs kpss kısmına-->
+<!--mor kısmın mobili olmadı-->
