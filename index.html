@@ -2,7 +2,6 @@
 <html lang="tr">
 
 <head>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Doping Hafıza - Deneme Sınavları</title>
@@ -74,9 +73,6 @@
       </div>
       <img src="./assets/icon/USER.svg" alt="user" class="lg:hidden w-[44px] h-[44px]" />
     </div>
-
-
-
     <div class="hidden lg:flex items-center gap-[30px]">
       <nav class="flex items-center gap-[30px] mt-[4px] h-[22px]">
         <a href="#" class="text-[16px] font-manrope text-custom-red font-bold tracking-[-0.01em] hover:text-[#115883]">
@@ -98,6 +94,8 @@
     </div>
     </div>
 
+
+    <div id="modal-overlay" class="hidden fixed inset-0 bg-black bg-opacity-40 z-40"></div>
     <div id="login-form"
       class="hidden fixed top-[100px] right-[300px] z-50 bg-white shadow-xl rounded-[8px] w-[370px] p-[30px]">
       <button id="kapat-btn"
@@ -151,39 +149,186 @@
       <input id="tel" type="tel" placeholder="+90 (5--) --- -- --"
         class="w-full h-[50px] px-[16px] rounded-[6px] border border-[#B5C7D0] text-[14px] font-manrope focus:outline-none focus:ring-2 focus:ring-[#00507D] mb-[20px]" />
 
-      <button
+      <button id="onayKoduGonderBtn"
         class="w-full h-[50px] bg-[#00507D] text-white rounded-[6px] text-[16px] font-manrope font-extrabold hover:bg-[#003F63] transition">
         Onay Kodu Gönder
       </button>
+
     </div>
-    
+
+
+    <div id="onay-kodu-modal"
+      class="hidden fixed top-[100px] left-1/2 transform -translate-x-1/2 z-50 bg-white shadow-xl rounded-[10px]  p-[30px]">
+      <h2 class="text-[#115883] font-manrope font-bold text-[32px] mb-[12px]">Onay Kodunu Girin</h2>
+
+      <p class="text-[#2C3E50] text-[14px] font-manrope mb-[20px]">
+        <span class="font-bold">(0506) 358** **</span> numaralı telefona SMS ile gönderilen 4 haneli kodu girin.
+      </p>
+
+
+      <div class="flex justify-between mb-[12px]">
+        <input type="text" maxlength="1"
+          class="w-[115px] h-[140px] text-center text-[48px] border border-[#D1D5DB] rounded-[10px] bg-[#FFFFFF] font-manrope font-bold focus:outline-none" />
+        <input type="text" maxlength="1"
+          class="w-[115px] h-[140px] text-center text-[48px] border border-[#D1D5DB] rounded-[10px] bg-[#FFFFFF] font-manrope font-bold focus:outline-none" />
+        <input type="text" maxlength="1"
+          class="w-[115px] h-[140px] text-center text-[48px] border border-[#D1D5DB] rounded-[10px] bg-[#FFFFFF] font-manrope font-bold focus:outline-none shadow-md" />
+        <input type="text" maxlength="1"
+          class="w-[115px] h-[140px] text-center text-[48px] border border-[#D1D5DB] rounded-[10px] bg-[#FFFFFF] font-manrope font-bold focus:outline-none shadow-md" />
+      </div>
+
+      <p class="text-center text-[#2C3E50] text-[16px] font-manrope font-bold mb-[20px]">
+        <span id="geriSayim">00:59</span> sonra kod tekrar gönderilecek.
+      </p>
+
+      <button id="onayKoduGirBtn"
+        class="w-full h-[56px] bg-[#00507D] text-white rounded-[8px] text-[16px] font-manrope font-extrabold hover:bg-[#003F63] transition">
+        Onay Kodunu Gir
+      </button>
+    </div>
+
+    <div id="yeni-sifre-modal"
+      class="modal hidden fixed top-[100px] left-1/2 transform -translate-x-1/2 z-50 bg-white shadow-xl rounded-[8px] w-[500px] p-[30px]">
+      <button id="yeniSifreKapatBtn"
+        class="absolute top-[16px] right-[16px] text-[#999] hover:text-[#115883] text-[22px] font-bold focus:outline-none">
+        &times;
+      </button>
+      <h2 class="text-[#115883] font-manrope font-bold text-[20px] mb-[20px]">Yeni Şifre Oluştur</h2>
+      <div class="mb-[16px]">
+        <label class="block text-[#2C3E50] text-[14px] font-manrope font-bold mb-[6px]">Yeni Şifre</label>
+        <input type="password" placeholder="Yeni şifrenizi girin"
+          class="w-full h-[50px] px-[16px] border border-[#D1D5DB] rounded-[6px] text-[16px] font-manrope" />
+      </div>
+      <div class="mb-[24px]">
+        <label class="block text-[#2C3E50] text-[14px] font-manrope font-bold mb-[6px]">Yeni Şifre (Tekrar)</label>
+        <input type="password" placeholder="Şifrenizi tekrar girin"
+          class="w-full h-[50px] px-[16px] border border-[#D1D5DB] rounded-[6px] text-[16px] font-manrope" />
+      </div>
+      <button id="sifreyiKaydetBtnnn"
+        class="w-full bg-[#115883] text-white font-manrope text-[16px] font-bold py-[12px] rounded-[6px] hover:bg-[#0E4C73] transition">
+        Şifreyi Kaydet
+      </button>
+    </div>
+
+
 
     <script>
+      const overlay = document.getElementById('modal-overlay');
       const girisBtn = document.getElementById("girisButonu");
       const loginForm = document.getElementById("login-form");
       const kapatBtnn = document.getElementById("kapat-btn");
 
       girisBtn.addEventListener("click", () => {
         loginForm.classList.toggle("hidden");
+        overlay.classList.remove('hidden');
       });
 
       kapatBtnn.addEventListener("click", () => {
         loginForm.classList.add("hidden");
+        overlay.classList.add('hidden');
       });
+
 
       const sifreBtn = document.getElementById("sifreUnuttumBtn");
       const sifreModal = document.getElementById("sifre-unuttum-modal");
       const sifreKapatBtn = document.getElementById("kapat-sifre");
-
       sifreBtn.addEventListener("click", (e) => {
         e.preventDefault();
         sifreModal.classList.remove("hidden");
+        loginForm.classList.add("hidden");
+        overlay.classList.remove("hidden");
       });
 
       sifreKapatBtn.addEventListener("click", () => {
         sifreModal.classList.add("hidden");
+        overlay.classList.add('hidden');
+      });
+
+
+      const onayKoduBtn = document.getElementById('onayKoduGonderBtn');
+      const onayKoduModal = document.getElementById('onay-kodu-modal');
+      const geriSayimSpan = document.getElementById('geriSayim');
+
+
+      onayKoduBtn.addEventListener('click', () => {
+        onayKoduModal.classList.remove('hidden');
+        sifreModal.classList.add('hidden');
+        overlay.classList.remove('hidden');
+      });
+
+
+
+      const inputs = document.querySelectorAll('#onay-kodu-modal input[type="text"]');
+
+      inputs.forEach((input, index) => {
+        input.addEventListener('input', () => {
+          if (input.value.length === 1 && index < inputs.length - 1) {
+            inputs[index + 1].focus();
+          }
+        });
+
+        input.addEventListener('keydown', (e) => {
+          if (e.key === 'Backspace' && input.value === '' && index > 0) {
+            inputs[index - 1].focus();
+          }
+        });
+      });
+
+
+      let geriSayimInterval;
+
+      onayKoduBtn.addEventListener('click', () => {
+        onayKoduModal.classList.remove('hidden');
+        sifreModal.classList.add('hidden');
+        let kalanSaniye = 59;
+        geriSayimSpan.textContent = formatla(kalanSaniye);
+
+
+        clearInterval(geriSayimInterval);
+
+
+        geriSayimInterval = setInterval(() => {
+          kalanSaniye--;
+
+          if (kalanSaniye <= 0) {
+            clearInterval(geriSayimInterval);
+            geriSayimSpan.textContent = "00:00";
+
+
+          } else {
+            geriSayimSpan.textContent = formatla(kalanSaniye);
+          }
+        }, 1000);
+      });
+
+
+      function formatla(saniye) {
+        let dakika = Math.floor(saniye / 60);
+        let saniyeKalan = saniye % 60;
+        return `${dakika.toString().padStart(2, '0')}:${saniyeKalan.toString().padStart(2, '0')}`;
+      }
+
+      overlay.addEventListener('click', () => {
+        // 
+      });
+
+      const yeniSifreModal = document.getElementById("yeni-sifre-modal");
+      const yeniSifreKapatBtn = document.getElementById("yeniSifreKapatBtn");
+      const onayKoduGirButonu = document.getElementById("onayKoduGirBtn");
+      onayKoduGirButonu.addEventListener("click", () => {
+        document.getElementById("onay-kodu-modal").classList.add("hidden");
+        yeniSifreModal.classList.remove("hidden");
+        overlay.classList.remove("hidden");});
+      yeniSifreKapatBtn.addEventListener("click", () => {
+        yeniSifreModal.classList.add("hidden");
+        overlay.classList.add("hidden");});
+      const sifreKaydetBtn = document.getElementById("sifreyiKaydetBtnnn");
+      sifreKaydetBtn.addEventListener("click", () => {
+        localStorage.setItem("sifreBasariMesaji", "Yeni şifreniz başarıyla kaydedildi.");
+        window.location.href = "/index.html";
       });
     </script>
+
 
   </header>
   <section class="relative py-[40px] lg:py-[100px] hero-section">
@@ -317,7 +462,6 @@
         </div>
       </div>
 
-      
       <script>
         const filtreButon = document.querySelectorAll(".filter-btn");
         const cards = document.querySelectorAll(".card");
@@ -794,8 +938,18 @@
       }
     });
   </script>
-</body>
 
+  <script>
+    const mesaj = localStorage.getItem("sifreBasariMesaji");
+    if (mesaj) {
+      const alertBox = document.createElement("div");
+      alertBox.textContent = mesaj;
+      alertBox.className = "w-full text-center bg-green-500 text-white py-3 font-manrope text-[14px]";
+      document.body.prepend(alertBox);
+      localStorage.removeItem("sifreBasariMesaji");
+      setTimeout(() => alertBox.remove(), 3000);
+    }
+  </script>
+
+</body>
 </html>
-<!--Scroll ekleyemedim tyt ayt lgs kpss kısmına-->
-<!--mor kısmın mobili olmadı-->
